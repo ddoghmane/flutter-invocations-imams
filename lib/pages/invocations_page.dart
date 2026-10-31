@@ -118,7 +118,6 @@ class _InvocationsPageState extends State<InvocationsPage> {
                           crossAxisAlignment:
                               CrossAxisAlignment.start,
                           children: [
-
                             Text(
                               titre,
                               style: const TextStyle(

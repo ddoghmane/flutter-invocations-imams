@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'invocations_page.dart';
+import 'imam_detail_page.dart';
 
 class ImamsPage extends StatelessWidget {
   const ImamsPage({super.key});
 
-  final List<String> imams = const [
+  static const List<String> imams = [
     "Abou Hanifa",
     "Malik ibn Anas",
     "Al-Shafi'i",
@@ -18,9 +18,12 @@ class ImamsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFF101010),
+
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
+        centerTitle: true,
         title: const Text(
           "Les Maîtres Spirituels",
           style: TextStyle(
@@ -29,7 +32,6 @@ class ImamsPage extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        centerTitle: true,
       ),
 
       body: ListView.builder(
@@ -38,7 +40,11 @@ class ImamsPage extends StatelessWidget {
           final imam = imams[index];
 
           return Card(
-            margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+            color: const Color(0xFF1B1B1B),
+            margin: const EdgeInsets.symmetric(
+              horizontal: 16,
+              vertical: 10,
+            ),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(18),
             ),
@@ -51,12 +57,23 @@ class ImamsPage extends StatelessWidget {
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              trailing: const Icon(Icons.arrow_forward, color: Colors.white),
+              subtitle: const Text(
+                "Biographie et Invocations",
+                style: TextStyle(
+                  color: Colors.white70,
+                ),
+              ),
+              trailing: const Icon(
+                Icons.menu_book,
+                color: Color(0xFFE0C084),
+              ),
               onTap: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (_) => InvocationsPage(imam: imam),
+                    builder: (_) => ImamDetailPage(
+                      imam: imam,
+                    ),
                   ),
                 );
               },
